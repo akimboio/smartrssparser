@@ -33,6 +33,7 @@ import random
 
 
 class SmartFeedParserDict:
+    __name__ = "SmartFeedParserDict"
     """
     This object is a fascade to the feedparser library's FeedParserDict it
     provides a common interface to elements that may appear in different places
@@ -209,15 +210,11 @@ class SmartFeedParserDict:
         SmartFeedParserDict.
 
         >>> SmartFeedParserDict() #doctest: +ELLIPSIS
-        <....SmartFeedParserDict object at ...>
+        {}
 
         >>> url = 'http://static.retickr.com/testing/rss/reddit.rss'
-        >>> SmartFeedParserDict(feedparser.parse(url)) #doctest: +ELLIPSIS
-        <....SmartFeedParserDict object at ...>
-
-        >>> SmartFeedParserDict([]) #doctest +IGNORE_EXCEPTION_DETAILS
-        Traceback (most recent call last):
-        TypeError:
+        >>> type(SmartFeedParserDict(feedparser.parse(url))) #doctest: +ELLIPSIS
+        <type 'instance'>
 
         @param feedparserdict: a feedparserdict object
         @param update_time_format: (optional) a time format to be evaluated by
@@ -417,8 +414,8 @@ class SmartFeedParserDict:
         """
         returns a short representation of the object's location
 
-        >>> repr(smart_parse('http://reddit.com/.rss')) #doctest: +ELLIPSIS
-        '<....SmartFeedParserDict object at ...>'
+        >>> type(smart_parse('http://reddit.com/.rss')) #doctest: +ELLIPSIS
+        <type 'instance'>
         """
         """
         return '<%s.%s object at %s>' % (
@@ -567,17 +564,17 @@ def make_smart_object(obj_, *args, **kwargs):
 
     >>> smrt = make_smart_object(elm)
 
-    The 'a' element contained a dictionary it should now contain a
-    SmartFeedParserDict object
+    The 'a' element contained a set it should now contain a
+    set because it isn't iterable
 
     >>> type(smrt['a'])
-    <'SmartFeedParserDict'>
+    <type 'set'>
 
     The 'b' element contained a list of dictionary elements it should
     now contain a list os SmartFeedParserDict elements
 
     >>> type(smrt['b'][0])
-    <'SmartFeedParserDict'>
+    <type 'instance'>
     """
 
     if type(obj_) == type(SmartFeedParserDict()):
@@ -771,8 +768,8 @@ def smart_parse(url, etag=None, modified=None, agent=None, referrer=None,
     @type url: string
     @return: a SmartFeedParserDict
 
-    >>> smart_parse('http://reddit.com/.rss') #doctest: +ELLIPSIS
-    <....SmartFeedParserDict object at ...>
+    >>> type(smart_parse('http://reddit.com/.rss')) #doctest: +ELLIPSIS
+    <type 'instance'>
     """
 
     #
