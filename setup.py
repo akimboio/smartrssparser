@@ -24,4 +24,7 @@ setup(
         "Topic :: Framework",
         "License :: OSI Approved :: Closed",
     ],
+    install_requires=[
+        "BeautifulSoup"
+        ]
 )

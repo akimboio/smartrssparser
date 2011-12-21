@@ -375,10 +375,12 @@ class SmartFeedParserDict:
         <type 'instance'>
         """
 
-        return  return_longest_list_element(
-                       [self.get("items", []), 
-                        self.get("entries", []), 
-                        self.get("content", [])])
+        raw_stories = return_longest_list_element(
+            [self.get("items", []), 
+             self.get("entries", []), 
+             self.get("content", [])])
+
+        return [make_smart_object(raw_story) for raw_story in raw_stories]
 
     def __contains__(self, key):
         """
