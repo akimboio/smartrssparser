@@ -244,16 +244,15 @@ class SmartFeedParserDict:
         In an *intelligent* way get the link for the story
         """
         for link in self["links"]:
-            if link.has_key("type") and link["type"] == "text/html" and link.has_key("href"):
+            if "type" in link and link["type"] == "text/html" and "href" in link:
                 return link["href"]
 
         # If we fail to find one of the proper type try to return ANYTHING that has an href
-        for link in self["links"]:
-            if link.has_key("href"):
+        for link in self.get("links", []):
+            if "href" in link:
                 return link["href"]
 
         # If that fails, print self and dump nothing
-        print self
         return ""
 
     def _get_source_unescaped_html(self):
