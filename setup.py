@@ -24,7 +24,8 @@ setup(
         "Topic :: Framework",
         "License :: OSI Approved :: Closed",
     ],
-    install_requires=[
-        "BeautifulSoup"
+    install_requires = [
+        "BeautifulSoup",
+        "feedparser"
         ]
 )
