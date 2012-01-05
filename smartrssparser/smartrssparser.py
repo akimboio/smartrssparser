@@ -243,7 +243,7 @@ class SmartFeedParserDict:
         """
         In an *intelligent* way get the link for the story
         """
-        for link in self["links"]:
+        for link in self.get("links", []):
             if "type" in link and link["type"] == "text/html" and "href" in link:
                 return link["href"]
 
