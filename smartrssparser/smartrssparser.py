@@ -19,6 +19,7 @@ __author__ = "Adam Haney <adam.haney@retickr.com>"
 __license__ = "Copyright (c) 2011 retickr, LLC"
 __version__ = "0.1"
 
+# Import Retickr's special blend of feedparser
 import feedparser
 import time
 import calendar
