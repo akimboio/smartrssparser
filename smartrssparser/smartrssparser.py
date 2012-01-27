@@ -9,10 +9,10 @@ The Universal Feed Parser can be found at:
 U{http://code.google.com/p/feedparser}
 
 
-@author: Adam Haney
-@organization Retickr
-@contact: adam.haney@retickr.com
-@license: Copyright (c) 2011 retickr, LLC
+:author: Adam Haney
+:organization Retickr
+:contact: adam.haney@retickr.com
+:license: Copyright (c) 2011 retickr, LLC
 """
 
 __author__ = "Adam Haney <adam.haney@retickr.com>"
@@ -204,7 +204,7 @@ class SmartFeedParserDict:
         return str_
 
     def __init__(self, feedparserdict=None,
-                 update_time_format="%Y-%m-%d %H:%M:%SZ",
+                 update_time_format="%Y-%m-%dT%H:%M:%SZ",
                  encoding_func=None, fuzz_update_time=1):
         """
         Takes a feedparserdict as an argument and returns an instance of
