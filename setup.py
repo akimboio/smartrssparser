@@ -11,7 +11,7 @@ def read(fname):
 setup(
     name = "Smart RSS parser",
     author = "Adam Haney",
-    version = "0.2",
+    version = "0.2.1",
     author_email = "adam.haney@retickr.com",
     description = ("A fascade for retickr that wraps around the Universal Feed Parser"),
     license = "Closed",
