@@ -11,7 +11,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "Smart RSS parser",
+    name = "SmartRSSparser",
     author = "Adam Haney",
     version = "0.2.1",
     author_email = "adam.haney@retickr.com",
