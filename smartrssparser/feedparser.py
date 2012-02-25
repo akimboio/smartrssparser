@@ -3653,7 +3653,7 @@ def parse(url_file_stream_or_string, etag=None, modified=None, agent=None, refer
             f = _open_resource(url_file_stream_or_string, etag, modified, agent, referrer, handlers, request_headers)
             data = f.read()
         except eventlet.Timeout, e:
-            print "***** Timed out as desired"
+            #print "***** Timed out as desired"
             result['bozo'] = 1
             result['bozo_exception'] = e
             data = None
