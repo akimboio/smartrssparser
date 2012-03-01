@@ -344,8 +344,11 @@ class SmartFeedParserDict:
         # Make sure that the time isn't more recent than right now to outsmart
         # wouldbe tricksters
         # TODO: right a test to validate this functionality
-        elm_epoch_time = calendar.timegm(
-            time.strptime(update_time, self.update_time_format))
+        try:
+            elm_epoch_time = calendar.timegm(
+                time.strptime(update_time, self.update_time_format))
+        except ValueError, e:
+            elm_epoch_time = time.time() + 5
 
         if int(elm_epoch_time) > int(time.time()):
             update_time = time.strftime(self.update_time_format, time.gmtime())
