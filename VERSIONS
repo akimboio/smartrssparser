@@ -1,3 +1,7 @@
+Changes in 0.2.2
+
+  Added a quick sanity check to handle improper date formats coming from RSS feeds
+
 Changes in 0.2.1
 
   0.2.1 is the first version of smartrssparser that we started
