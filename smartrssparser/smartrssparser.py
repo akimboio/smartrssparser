@@ -915,7 +915,6 @@ def smart_get_favicon_url(url):
     except UnicodeError:
         return favicon
 
-    print "Parsing for favicon"
     # Iterate over all the link tags in the html contents
     for link in soup('link'):
         if link.has_key('rel') and link.has_key('href') and\
