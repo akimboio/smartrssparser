@@ -884,7 +884,7 @@ def smart_get_favicon_url(url):
     >>> smart_get_favicon_url('http://example.com')
     'http://example.com/favicon.ico'
 
-    @param url: The url of the html page or rss feed that you want an icon for. 
+    @param url: The url of the html page or rss feed that you want an icon for.
     """
     import BeautifulSoup
     from urlparse import urlparse, urljoin
@@ -915,10 +915,13 @@ def smart_get_favicon_url(url):
     except UnicodeError:
         return favicon
 
-    # Iterate over all the link tags in the html contents 
+    print "Parsing for favicon"
+    # Iterate over all the link tags in the html contents
     for link in soup('link'):
-        if link.has_key('rel') and link['rel'] in icon_list:
+        if link.has_key('rel') and link.has_key('href') and\
+                link['rel'] in icon_list:
             favicon = urljoin(url, link['href'].encode("utf-8").strip())
+
             return favicon
 
     # We haven't returned, we must not have found it, return the dumb one
