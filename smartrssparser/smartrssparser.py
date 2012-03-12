@@ -917,8 +917,7 @@ def smart_get_favicon_url(url):
 
     # Iterate over all the link tags in the html contents
     for link in soup('link'):
-        if link.has_key('rel') and link.has_key('href') and\
-                link['rel'] in icon_list:
+        if "href" in link and link.get("rel") in icon_list:
             favicon = urljoin(url, link['href'].encode("utf-8").strip())
 
             return favicon
