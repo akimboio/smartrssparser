@@ -27,7 +27,9 @@ import warnings
 import copy
 import pprint
 import urllib
-import urllib2
+from eventlet.green import urllib2 as urllib2
+import eventlet
+#import urllib2
 import socket
 import httplib
 import random
@@ -898,7 +900,13 @@ def smart_get_favicon_url(url):
 
     # Parse the url using Beautiful Soup
     try:
-        html = urllib2.urlopen(urllib2.Request(url), timeout=30).read()
+        with eventlet.Timeout(15, False):
+            try:
+                html = urllib2.urlopen(urllib2.Request(url)).read()
+            except eventlet.Timeout:
+                return ""
+            except Exception:
+                return ""
         soup = BeautifulSoup.BeautifulSoup(html)
     except ValueError:
         print url

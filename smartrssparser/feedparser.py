@@ -3648,12 +3648,11 @@ def parse(url_file_stream_or_string, etag=None, modified=None, agent=None, refer
 
     # Timeout after some amount of time and suppress a timeout exception
     # outside of the with statement
-    with eventlet.Timeout(10, False):
+    with eventlet.Timeout(15, False):
         try:
             f = _open_resource(url_file_stream_or_string, etag, modified, agent, referrer, handlers, request_headers)
             data = f.read()
         except eventlet.Timeout, e:
-            print "***** Timed out as desired"
             result['bozo'] = 1
             result['bozo_exception'] = e
             data = None
