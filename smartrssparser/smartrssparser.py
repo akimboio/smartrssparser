@@ -905,11 +905,10 @@ def smart_get_favicon_url(url):
                 html = urllib2.urlopen(urllib2.Request(url)).read()
             except eventlet.Timeout:
                 return ""
-            except Exception:
+            except urllib2.URLError:
                 return ""
         soup = BeautifulSoup.BeautifulSoup(html)
     except ValueError:
-        print url
         return ""
 
     # These are the exceptions typically thrown when we can't fetch the url
