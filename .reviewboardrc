@@ -1,2 +1,2 @@
-REPOSITORY = smartrssparser
-REVIEWBOARD_URL = http://reviewboard.retickr.com
+REPOSITORY = "smartrssparser"
+REVIEWBOARD_URL = "http://reviewboard.retickr.com"
