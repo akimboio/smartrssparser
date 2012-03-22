@@ -29,7 +29,6 @@ import pprint
 import urllib
 from eventlet.green import urllib2 as urllib2
 import eventlet
-#import urllib2
 import socket
 import httplib
 import random
