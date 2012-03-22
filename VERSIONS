@@ -1,3 +1,6 @@
+Changes in 0.2.3
+  smartrssparser now uses eventlet for scraping pages for favicons
+
 Changes in 0.2.2
 
   Added a quick sanity check to handle improper date formats coming from RSS feeds
