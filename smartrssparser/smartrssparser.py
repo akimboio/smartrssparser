@@ -363,6 +363,27 @@ class SmartFeedParserDict:
     def __len__(self):
         return len(self.__dict__)
 
+    def _get_title(self):
+        """
+        Pull the title from the channel.
+
+        When this object is the top level feed parser dict representing the
+        entire feed, then we would access the title with the below line:
+
+        return self.__feed_dict__.get("feed", {}).__feed_dict__.get("title", "")
+
+        I debate whether to go with the above very explicit approach, or
+        to break it up like below.
+        """
+        if "title" in self.__feed_dict__:
+            return self.__feed_dict__.get("title")
+        elif "feed" in self.__feed_dict__ and (
+                SmartFeedParserDict == self.__feed_dict__["feed"].__class__
+            ):
+            return self.__feed_dict__["feed"].get("title", None)
+        else:
+            return None
+
     def _get_stories(self):
         """
         A normalized element that is not present in the feedparser dictionary
