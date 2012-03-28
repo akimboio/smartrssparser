@@ -1,3 +1,6 @@
+Changes in 0.2.4
+  Added a _get_title() method to SmartFeedParserDict
+
 Changes in 0.2.3
   smartrssparser now uses eventlet for scraping pages for favicons
 
