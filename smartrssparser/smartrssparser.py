@@ -908,6 +908,11 @@ def smart_get_favicon_url(url):
 
     @param url: The url of the html page or rss feed that you want an icon for.
     """
+    (favicon, html) = smart_scrape_url(url)
+
+    return favicon
+
+def smart_scrape_url(url):
     import BeautifulSoup
     from urlparse import urlparse, urljoin
 
@@ -924,33 +929,33 @@ def smart_get_favicon_url(url):
             try:
                 html = urllib2.urlopen(urllib2.Request(url)).read()
             except eventlet.Timeout:
-                return ""
+                return ("", "")
             except urllib2.URLError:
-                return ""
+                return ("", "")
         soup = BeautifulSoup.BeautifulSoup(html)
     except ValueError:
-        return ""
+        return ("", "")
 
     # These are the exceptions typically thrown when we can't fetch the url
     except (urllib2.HTTPError, urllib2.URLError, socket.timeout,
             httplib.IncompleteRead, httplib.BadStatusLine):
-        return favicon
+        return (favicon, html)
 
     # The unicode error is particularly nasty, because we don't control what
     # this library does, for now we'll just pass back a dumb url, I'd like to
     # find a better way of dealing with this issue
     except UnicodeError:
-        return favicon
+        return (favicon, html)
 
     # Iterate over all the link tags in the html contents
     for link in soup('link'):
         if "href" in link and link.get("rel") in icon_list:
             favicon = urljoin(url, link['href'].encode("utf-8").strip())
 
-            return favicon
+            return (favicon, html)
 
     # We haven't returned, we must not have found it, return the dumb one
-    return favicon
+    return (favicon, html)
 
 # Run this script directly ro run the tests
 if __name__ == "__main__":
