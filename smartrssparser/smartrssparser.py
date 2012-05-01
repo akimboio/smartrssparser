@@ -401,8 +401,8 @@ class SmartFeedParserDict:
         """
 
         raw_stories = return_longest_list_element(
-            [self.get("items", []), 
-             self.get("entries", []), 
+            [self.get("items", []),
+             self.get("entries", []),
              self.get("content", [])])
 
         return [make_smart_object(raw_story) for raw_story in raw_stories]
@@ -826,16 +826,16 @@ def smart_new_story_filter(stories_object, identifier, most_recent_identifier=""
     order. It then returns a list of only stories newer than the
     most_recent_identifier. It usually makes sense for this identifier
     to be title as it is reasonably unique. But these elements could be date
-    or some other assumed unique identifier of story elements. 
+    or some other assumed unique identifier of story elements.
 
     @param stories_object: a list of elements that are accessible with
         dictionary notation. This list should be in a meaninful order
         usually chronological. Elements should at least usually contain
         the identifier key. The behavior of the function upon encountering
         a missing identifier key can be determined by channging the
-        fail_full_list parameter. By default if an identifier is 
+        fail_full_list parameter. By default if an identifier is
         missing in any element the full list of elements will be returned.
-    @param identifier: a reasonibly unique identifier for elements in the 
+    @param identifier: a reasonibly unique identifier for elements in the
         list. This can be a title, an update_time or any element contained
         in the story
     @param most_recent_identifier: an element that identifies the most
