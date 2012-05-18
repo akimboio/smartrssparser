@@ -925,13 +925,15 @@ def smart_scrape_url(url):
 
     # Parse the url using Beautiful Soup
     try:
-        with eventlet.Timeout(15, False):
+        with eventlet.Timeout(15, False) as timeout:
             try:
                 html = urllib2.urlopen(urllib2.Request(url)).read()
             except eventlet.Timeout:
                 return ("", "")
             except urllib2.URLError:
                 return ("", "")
+            finally:
+                timeout.cancel()
         soup = BeautifulSoup.BeautifulSoup(html)
     except ValueError:
         return ("", "")
