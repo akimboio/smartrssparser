@@ -3665,6 +3665,8 @@ def parse(url_file_stream_or_string, etag=None, modified=None, agent=None, refer
             data = None
             f = None
 
+            return result
+
     if hasattr(f, 'headers'):
         result['headers'] = dict(f.headers)
     # overwrite existing headers using response_headers
