@@ -1,3 +1,6 @@
+Changes in 0.2.5.2
+  Added additional exception handling
+
 Changes in 0.2.5
   Added a smart_scrape_url function for scraping a URL and returning
   it's html content as well as a favicon link
