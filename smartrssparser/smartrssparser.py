@@ -934,6 +934,8 @@ def smart_scrape_url(url):
                 return ("", "")
             except eventlet.green.httplib.BadStatusLine:
                 return ("", "")
+            except httplib.BadStatusLine:
+                return ("", "")
             finally:
                 timeout.cancel()
         soup = BeautifulSoup.BeautifulSoup(html)
